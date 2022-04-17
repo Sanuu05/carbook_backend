@@ -98,7 +98,9 @@ route.get('/cars',async(req,res)=>{
 route.get('/search/:id',async(req,res)=>{
     try {
         console.log(req.params.id)
-        const token = '0e54449e-849f-4bb2-a6e7-29fdaed99b10'
+       
+        const tokendata = await axios.get('https://outpost.mapmyindia.com/api/security/oauth/token?client_id=33OkryzDZsKTy-g6L2eOxugpgslTaKzkYllloIXrYZ8FO9h-cjOhpbeGWTsjcp93IEPd1_0Z5fWEluRj9B8IBQ==&client_secret=lrFxI-iSEg89pi28yTRIV2CD-BHm_5941BTQ9hGVQUkhCSO32CulRGT1A7MxzxamK4XdWljWPaHIWadX6QCsrr8dJYWxvuyy&grant_type=client_credentials')
+        const token = tokendata?.data?.access_token
         const config = {
         
             headers: {
@@ -109,6 +111,7 @@ route.get('/search/:id',async(req,res)=>{
                 // withCredentials: false,
             }
         };
+    
 
         const { data } = await axios.get(`https://atlas.mapmyindia.com/api/places/geocode?address=${req.params.id}&itemCount=100`,config)
         console.log('data',data)
