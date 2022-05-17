@@ -10,7 +10,7 @@ const auth = (req, res, next)=>{
                 msg:"no token"
             })
         }
-        const verify = jwt.verify(token,"yyuyuywedhssss77&^&^&YDSYYD&*T#^T^TDGDG#&Y&*Y&*RY#FH&*H&*HG&F*T^RGR#RG^R^G&R#&G")
+        const verify = jwt.verify(token,process.env.SEC_KEY)
         // console.log("vv",verify)
         if(!verify){
             return res.status(400).json({

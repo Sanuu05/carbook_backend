@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-mongoose.connect("mongodb+srv://sanz:sannu05@cluster0.s5xci.mongodb.net/carb?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGO, {
     // useCreateIndex: true,
     // useFindAndModify: false,
     useNewUrlParser: true,
